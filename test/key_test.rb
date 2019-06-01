@@ -12,13 +12,18 @@ class KeyTest < MiniTest::Test
   end
 
   def test_key_attributes #is this enough?
-    assert_instance_of Integer, @key.a
-    assert_instance_of Integer, @key.b
-    assert_instance_of Integer, @key.c
-    assert_instance_of Integer, @key.d
+    assert_equal [], @key.a
+    assert_equal [], @key.b
+    assert_equal [], @key.c
+    assert_equal [], @key.d
+  end
+
+  def test_generate
+    assert_instance_of Integer, @key.generate
   end
 
   def test_group
-    assert_equal 5, key.group.length
+    skip
+    assert_equal 5, @key.group.length
   end
 end

@@ -1,11 +1,17 @@
 class Key
-  attr_reader :a, :b, :c, :d 
+  attr_reader :a, :b, :c, :d
 
-  def initialize(key = nil) #optional, maybe make a conditional that will ket key, if nil.
-    @a = rand(9)
-    @b = rand(9)
-    @c = rand(9)
-    @d = rand(9)
+  def initialize(key = nil) #optional, maybe make a conditional that will get key, if nil.
+    @a = []
+    @b = []
+    @c = []
+    @d = []
+  end
+
+  def group
+    random_numbers = []
+    random_numbers.push(@a).push(@b).push(@c).push(@d)
+
   end
 
 end
