@@ -19,7 +19,8 @@ class KeyTest < MiniTest::Test
   end
 
   def test_generate
-    assert_instance_of Integer, @key.generate
+    #binding.pry
+    assert_instance_of Integer, @key.generate.to_i
   end
 
   def test_group
