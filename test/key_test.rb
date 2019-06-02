@@ -16,6 +16,7 @@ class KeyTest < MiniTest::Test
   def test_set_numbers
     #@key.set_numbers("12345")
     assert_equal "12345", @clave.random_number
+    assert_instance_of Integer, @key.random_number.to_i
   end
 
   def test_generate #i don't think that I'm testing this correctly
@@ -25,14 +26,23 @@ class KeyTest < MiniTest::Test
   def test_digits
     expected = [1, 2, 3, 4, 5]
     assert_equal expected, @clave.digits
+    assert_equal 5, @key.digits.length
   end
 
-  def test_assign_keys
+  def test_assign_keys_clave
     #binding.pry
     @clave.digits
     assert_equal 3, @clave.a
     assert_equal 5, @clave.b
     assert_equal 7, @clave.c
     assert_equal 9, @clave.d
+  end
+
+  def test_assign_keys_reg
+    @key.digits
+    assert_instance_of Integer, @key.a
+    assert_instance_of Integer, @key.b
+    assert_instance_of Integer, @key.c
+    assert_instance_of Integer, @key.d
   end
 end

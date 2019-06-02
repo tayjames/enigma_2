@@ -4,7 +4,7 @@ class Key
 
   def initialize(key = nil) #optional, maybe make a conditional that will get key, if nil.
     set_numbers(key)
-    digits 
+    digits
   end
 
   def set_numbers(clave = nil) #clave is key in spanish
@@ -25,7 +25,6 @@ class Key
     numeric = digits.map do |digit|
       digit.to_i
     end
-
   #def assign_keys
     @a = numeric[0..1].sum
     @b = numeric[1..2].sum
