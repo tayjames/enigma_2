@@ -14,8 +14,8 @@ class KeyTest < MiniTest::Test
   end
 
   def test_set_numbers
-    @key.set_numbers("12345")
-    assert_equal "12345", @key.random_number
+    #@key.set_numbers("12345")
+    assert_equal "12345", @clave.random_number
   end
 
   def test_generate #i don't think that I'm testing this correctly
@@ -28,11 +28,11 @@ class KeyTest < MiniTest::Test
   end
 
   def test_assign_keys
-    skip
-    @key.assign_keys
-    assert @key.a.include?([0..9])
-    assert @key.b.include?([0..9])
-    assert @key.c.include?([0..9])
-    assert @key.d.include?([0..9])
+    #binding.pry
+    @clave.digits
+    assert_equal 3, @clave.a
+    assert_equal 5, @clave.b
+    assert_equal 7, @clave.c
+    assert_equal 9, @clave.d
   end
 end
