@@ -19,25 +19,26 @@ class KeyTest < MiniTest::Test
   end
 
   def test_generate
-    assert_instance_of Integer, @key.generate.to_i
+    assert_instance_of Integer, @key.generate.to_s.to_i
   end
 
-  def test_assign_digits
+  def test_digits
+    binding.pry
+    assert_equal 5, @key.digits.length
+    #assert_instance_of Integer, @numeric_array.sum
+  end
+
+  def test_assign_keys
     skip
-#binding.pry
-    @key.set_digits
-    assert_instance_of Integer, @key.a
-    assert_instance_of Integer, @key.b
-    assert_instance_of Integer, @key.c
-    assert_instance_of Integer, @key.d
+    #@key.generate
+    @key.assign_keys
+    assert @key.a.include?([0..9])
+    assert @key.b.include?([0..9])
+    assert @key.c.include?([0..9])
+    assert @key.d.include?([0..9])
   end
 
   def test_group
     skip
-  end
-
-  def test_digits
-    #binding.pry
-    assert_equal 5, @key.digits.length
   end
 end
