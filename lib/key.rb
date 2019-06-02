@@ -3,13 +3,16 @@ class Key
   attr_reader :a, :b, :c, :d, :random_number
 
   def initialize(key = nil) #optional, maybe make a conditional that will get key, if nil.
-    @a = []
-    @b = []
-    @c = []
-    @d = []
-    @random_number = 0
-    generate
-    #@split_digits = @random_number.chars
+    set_numbers(key)
+  end
+
+  def set_numbers(clave = nil) #clave is key in spanish
+    #call this in initialize
+    if clave
+      @random_number = clave
+    else
+      generate
+    end
   end
 
   def generate
@@ -21,8 +24,7 @@ class Key
     numeric = digits.map do |digit|
       digit.to_i
     end
-    numeric 
-    #binding.pry
+    numeric
   end
 
   def assign_keys
@@ -30,10 +32,6 @@ class Key
     @b << digits[1..2].sum
     @c << digits[2..3].sum
     @d << digits[3..4].sum
-  end
-
-  def group
-
   end
 
 end
