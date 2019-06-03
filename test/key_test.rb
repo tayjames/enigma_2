@@ -20,7 +20,9 @@ class KeyTest < MiniTest::Test
   end
 
   def test_generate #i don't think that I'm testing this correctly
-    assert_instance_of Integer, @key.generate.to_s.to_i
+    assert_instance_of Integer, @key.generate.to_s.to_i #also test for size
+    assert_equal 5, @key.random_number.length #also test not same // compare
+    #mock(:rn  )
   end
 
   def test_digits

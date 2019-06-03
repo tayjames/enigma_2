@@ -7,7 +7,7 @@ class OffsetTest < MiniTest::Test
 
   def setup
     @offset = Offset.new
-    @setoff = Offset.new(10119)
+    @setoff = Offset.new(10119) #change this to ddmmyy
   end
 
   def test_offset_exists
@@ -16,7 +16,7 @@ class OffsetTest < MiniTest::Test
   end
 
   def test_set_date
-    assert_equal 20619, @offset.date
+    assert_equal 20619, @offset.date #6 digits
     assert_equal 10119, @setoff.date
   end
 
@@ -43,7 +43,7 @@ class OffsetTest < MiniTest::Test
     assert_equal 1, @setoff.b
     assert_equal 6, @setoff.c
     assert_equal 1, @setoff.d
-    binding.pry
+    #binding.pry
   end
 
 end
