@@ -17,7 +17,7 @@ class Key
   end
 
   # def generate
-    #@random_number = rand(10 ** 5).to_s.rjust(5,'0')  
+    #@random_number = rand(10 ** 5).to_s.rjust(5,'0')
   # end
 
   def get_digits
@@ -25,10 +25,10 @@ class Key
     numeric = digits.map do |digit|
       digit.to_i
     end
-    @a_key = numeric[0..1].sum
-    @b_key = numeric[1..2].sum
-    @c_key = numeric[2..3].sum
-    @d_key = numeric[3..4].sum
+    @a_key = numeric[0..1].join.to_i
+    @b_key = numeric[1..2].join.to_i
+    @c_key = numeric[2..3].join.to_i
+    @d_key = numeric[3..4].join.to_i
     numeric
   end
 
