@@ -11,4 +11,13 @@ class Enigma
     @character_set = ("a".."z").to_a << " "
   end
 
+  def get_key(llave = nil)
+    if llave
+      key = Key.new(llave)
+    else
+      key = Key.new
+    end
+
+  end
+
 end

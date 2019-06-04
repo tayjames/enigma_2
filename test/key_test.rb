@@ -34,10 +34,10 @@ class KeyTest < MiniTest::Test
   def test_assign_clave
     #binding.pry
     @clave.get_digits
-    assert_equal 3, @clave.a_key
-    assert_equal 5, @clave.b_key
-    assert_equal 7, @clave.c_key
-    assert_equal 9, @clave.d_key
+    assert_equal 12, @clave.a_key
+    assert_equal 23, @clave.b_key
+    assert_equal 34, @clave.c_key
+    assert_equal 45, @clave.d_key
   end
 
   def test_assign_keys

@@ -19,4 +19,13 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected, @enigma.character_set
   end
 
+  def test_get_key
+    binding.pry
+    assert_instance_of Key, @enigma.get_key
+  end
+
+  def test_get_offset
+    assert_instance_of Offset, @enigma.get_offset
+  end
+
 end
