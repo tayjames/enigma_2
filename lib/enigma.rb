@@ -17,7 +17,14 @@ class Enigma
     else
       key = Key.new
     end
+  end
 
+  def get_offset(setoff = nil)
+    if setoff
+      offset = Offset.new(setoff)
+    else
+      offset = Offset.new
+    end 
   end
 
 end
