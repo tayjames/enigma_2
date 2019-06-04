@@ -18,28 +18,30 @@ class ShiftTest < MiniTest::Test
   end
 
   def test_shift_exists
-    assert_instance_of Shift, @shift_0
+    assert_instance_of Shift, @shift_1
   end
 
   def test_shift_attributes
-    skip
-    #binding.pry
-    assert_equal [@a, @b, @c, @d], @shift.shifts
+    assert_equal [@a_shift, @b_shift, @c_shift, @d_shift], @shift_1.shifts
   end
 
   def test_set_key
-    #binding.pry
     @shift_0.set_key
-    assert_instance_of Integer, @shift_0.key
-    #binding.pry
-    assert_equal 5, @shift_0.key.to_s.length #not really key just random number
+    binding.pry
+    assert_equal 1, @shift_1.shifts.count
+    #assert_equal 5, @shift_0.key.to_s.length #not really key just random number
   end
 
   def test_set_offset
+    skip
     @shift_0.set_offset
     assert_instance_of Integer, @shift_0.offset
     #binding.pry
     assert_equal 5, @shift_0.offset.to_s.length #not really offset, just today's date
+  end
+
+  def test_set_shifts
+
   end
 
 end
