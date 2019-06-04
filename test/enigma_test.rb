@@ -17,6 +17,7 @@ class EnigmaTest < MiniTest::Test
   def test_enigma_character_set
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, @enigma.character_set
+    #binding.pry
   end
 
   def test_get_key
@@ -29,12 +30,36 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_encrypt
+    skip
     expected = {
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_decrypt
+    skip
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
+  def test_rotate_letter
+    #binding.pry
+    assert_equal "p", @enigma.rotate_letter("o", 1)
+    assert_equal "c", @enigma.rotate_letter("o", 15)
+    assert_equal "c", @enigma.rotate_letter("o", 42)
+    assert_equal "!", @enigma.rotate_letter("!", 1)
+    assert_equal "a", @enigma.rotate_letter(" ", 1)
+  end
+
+  def test_rotate_words
+    assert_equal "abcd", @enigma.rotate_words("abdc")
   end
 
 end

@@ -1,10 +1,11 @@
 require './lib/key'
 require './lib/offset'
+require './lib/shift'
 require './module/rotate'
 require 'pry'
 
 class Enigma
-  #include Rotate
+  include Rotate
   attr_reader :character_set
 
   def initialize
@@ -24,7 +25,21 @@ class Enigma
       offset = Offset.new(setoff)
     else
       offset = Offset.new
-    end 
+    end
   end
+
+  def encrypt(message, key = nil, date = nil)
+    key = get_key(key)
+    date = get_offset(date)
+
+  end
+
+  def decrypt(ciphertext, key = nil, date = nil )
+    key = get_key
+    date = get_offset
+
+  end
+
+
 
 end
