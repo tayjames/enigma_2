@@ -8,9 +8,8 @@ require 'pry'
 class ShiftTest < MiniTest::Test
   def setup
     @key = Key.new #random number
-    @clave = Key.new("12345") #given random number
     @offset = Offset.new #uses today's date
-    @setoff = Offset.new(10119) #given date /change this to ddmmyy
+
     @shift_0 = Shift.new #generates random key / offset
     @shift_1 = Shift.new(@key, @offset) #given key / offset
     @shift_2 = Shift.new(@key) #given key/ random offset
@@ -18,14 +17,19 @@ class ShiftTest < MiniTest::Test
   end
 
   def test_shift_exists
+    assert_instance_of Shift, @shift_0
     assert_instance_of Shift, @shift_1
+    assert_instance_of Shift, @shift_2
+    assert_instance_of Shift, @shift_3
   end
 
   def test_shift_attributes
+    skip
     assert_equal [@a_shift, @b_shift, @c_shift, @d_shift], @shift_1.shifts
   end
 
   def test_set_key
+    skip
     @shift_0.set_key
     binding.pry
     assert_equal 1, @shift_1.shifts.count
@@ -39,9 +43,4 @@ class ShiftTest < MiniTest::Test
     #binding.pry
     assert_equal 5, @shift_0.offset.to_s.length #not really offset, just today's date
   end
-
-  def test_set_shifts
-
-  end
-
 end
