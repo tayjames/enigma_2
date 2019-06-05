@@ -21,6 +21,8 @@ class EnigmaTest < MiniTest::Test
 
   def test_get_key
     assert_instance_of Key, @enigma.get_key
+    #assert_equal 5, key.random_number.count
+    # binding.pry
   end
 
   def test_get_offset
@@ -34,8 +36,16 @@ class EnigmaTest < MiniTest::Test
       date: "040895"
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
-    #binding.pry
     #assert_equal expected, @enigma.encrypt("OMG")[:encryption].count
+  end
+
+  def test_encrypt_given_key_no_date
+    expected = {
+      encryption: "mfhatasdwm ",
+      key: "02715",
+      date: "50619"
+    }
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
   def test_decrypt_given_key_given_date
@@ -47,17 +57,27 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 
+  def test_decrypt_given_key_no_date
+    encrypted = @enigma.encrypt("hello world", "02715")
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "50619"
+    }
+    assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
+  end
+
   def test_rotate_letter
     assert_equal "p", @enigma.rotate_letter("o", 1)
     assert_equal "c", @enigma.rotate_letter("o", 15)
     assert_equal "c", @enigma.rotate_letter("o", 42)
-    assert_equal "!", @enigma.rotate_letter("!", 1)
+    assert_equal "!", @enigma.rotate_letter("!", 15)
     assert_equal "a", @enigma.rotate_letter(" ", 1)
   end
 
-  def test_rotate_words
-    assert_equal "bdfh", @enigma.rotate_words("abcd", [1, 2, 3, 4])
-    # assert_equal "abcd", @enigma.rotate_words("abcd", )
+  def test_rotate_message
+    assert_equal "bdfh", @enigma.rotate_message("abcd", [1, 2, 3, 4])
+    #assert_equal "abcd", @enigma.rotate_message("abcd", )
     # assert_equal "aaaa", @enigma.rotate_words("    ", [28])
     # assert_equal "!!!!", @enigma.rotate_words("!!!!", [28])
   end
@@ -71,7 +91,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_unrotate_words
-    assert_equal "abcd", @enigma.unrotate_words("bdfh", [1, 2, 3, 4])
+    assert_equal "abcd", @enigma.unrotate_message("bdfh", [1, 2, 3, 4])
   end
 
 end

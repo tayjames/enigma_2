@@ -32,14 +32,14 @@ class Enigma
     key_1 = get_key(key)
     date_1 = get_offset(date)
     shift = Shift.new(key_1.random_number, date_1.date)
-    {encryption: rotate_words(message, shift.shifts), key: key_1.random_number, date: date_1.date }
+    {encryption: rotate_message(message, shift.shifts), key: key_1.random_number, date: date_1.date.to_s }
   end
 
   def decrypt(ciphertext, key, date = nil )
     key_2 = get_key(key)
     date_2 = get_offset(date)
     shift = Shift.new(key_2.random_number, date_2.date)
-    {decryption: unrotate_words(ciphertext, shift.shifts), key: key_2.random_number, date: date_2.date }
+    {decryption: unrotate_message(ciphertext, shift.shifts), key: key_2.random_number, date: date_2.date.to_s }
   end
 
 end
