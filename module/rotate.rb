@@ -17,13 +17,25 @@ module Rotate
       shift.rotate!
     end
     str
-    #binding.pry
-    # rotation = []
-    # word.chars.each do |letter|
-    #   rotation << rotate_letter(letter, shift)
-    # end
-    # rotation.join
-    #binding.pry
   end
 
+  def unrotate_letter(letter, shift)
+    letra = ""
+    if !@character_set.include?(letter)
+      letra += letter
+    else
+      letra += @character_set.rotate(-shift)[@character_set.index(letter)]
+    end
+    letra
   end
+
+  def unrotate_words(word, shift)
+    str = ''
+    word.downcase.chars.map do |letter|
+      str << unrotate_letter(letter, shift.first)
+      shift.rotate!
+    end
+    str
+  end
+
+end

@@ -31,16 +31,15 @@ class Enigma
   def encrypt(message, key = nil, date = nil)
     key_1 = get_key(key)
     date_1 = get_offset(date)
-    #binding.pry
     shift = Shift.new(key_1.random_number, date_1.date)
-    #binding.pry
     {encryption: rotate_words(message, shift.shifts), key: key_1.random_number, date: date_1.date }
   end
 
   def decrypt(ciphertext, key, date = nil )
     key_2 = get_key(key)
     date_2 = get_offset(date)
-    
+    shift = Shift.new(key_2.random_number, date_2.date)
+    {decryption: unrotate_words(ciphertext, shift.shifts), key: key_2.random_number, date: date_2.date }
   end
 
 end

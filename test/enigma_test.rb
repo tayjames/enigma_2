@@ -27,7 +27,7 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Offset, @enigma.get_offset
   end
 
-  def test_encrypt
+  def test_encrypt_given_key_given_date
     expected = {
       encryption: "keder ohulw",
       key: "02715",
@@ -38,8 +38,7 @@ class EnigmaTest < MiniTest::Test
     #assert_equal expected, @enigma.encrypt("OMG")[:encryption].count
   end
 
-  def test_decrypt
-    skip
+  def test_decrypt_given_key_given_date
     expected = {
       decryption: "hello world",
       key: "02715",
@@ -61,6 +60,18 @@ class EnigmaTest < MiniTest::Test
     # assert_equal "abcd", @enigma.rotate_words("abcd", )
     # assert_equal "aaaa", @enigma.rotate_words("    ", [28])
     # assert_equal "!!!!", @enigma.rotate_words("!!!!", [28])
+  end
+
+  def test_unrotate_letters
+    assert_equal "n", @enigma.unrotate_letter("o", 1)
+    assert_equal "o", @enigma.unrotate_letter("o", 27)
+    assert_equal "z", @enigma.unrotate_letter("o", 43)
+    assert_equal "!", @enigma.unrotate_letter("!", 1)
+    assert_equal "z", @enigma.unrotate_letter(" ", 1)
+  end
+
+  def test_unrotate_words
+    assert_equal "abcd", @enigma.unrotate_words("bdfh", [1, 2, 3, 4])
   end
 
 end
