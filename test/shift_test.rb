@@ -23,14 +23,19 @@ class ShiftTest < MiniTest::Test
     #assert_instance_of Shift, @shift_2
     #assert_instance_of Shift, @shift_3
   end
-  
-  def test_set_shifts
+
+  def test_shift_attributes
+    assert_instance_of Key, @shift_0.key
+    assert_instance_of Offset, @shift_0.offset
+    
     assert_instance_of Integer, @shift_0.a_shift
     assert_instance_of Integer, @shift_0.b_shift
     assert_instance_of Integer, @shift_0.c_shift
     assert_instance_of Integer, @shift_0.d_shift
+  end
+
+  def test_set_shifts
     assert_equal 4, @shift_0.shifts.count
-    #binding.pry
   end
 
 end

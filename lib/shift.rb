@@ -14,18 +14,6 @@ class Shift
     @d_shift = 0
     set_shifts
   end
-  #
-  # def set_key_and_offset(clave = nil, setoff = nil)
-  #   if clave && setoff
-  #     @key = clave && @offset = setoff
-  #   elsif clave && !setoff
-  #     @key = clave && @offset = Offset.new
-  #   elsif !clave && setoff
-  #     @key = Key.new && @offset = setoff
-  #   else
-  #     @key = Key.new #&& @offset = Offset.new
-  #   end
-  # end
 
   def set_shifts
     @a_shift = @key.a_key + @offset.a_offset

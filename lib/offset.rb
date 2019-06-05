@@ -1,5 +1,6 @@
 require 'pry'
 require 'date'
+
 class Offset
   attr_reader :a_offset, :b_offset, :c_offset, :d_offset, :date
 
