@@ -12,13 +12,8 @@ class Key
       @random_number = clave
     else
       @random_number = rand(10 ** 5).to_s.rjust(5,'0')
-      #generate
     end
   end
-
-  # def generate
-    #@random_number = rand(10 ** 5).to_s.rjust(5,'0')
-  # end
 
   def get_digits
     digits = @random_number.to_s.chars

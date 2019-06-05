@@ -15,15 +15,9 @@ class KeyTest < MiniTest::Test
 
   def test_set_random_number
     assert_instance_of Integer, @key.random_number.to_i
+    assert_equal 5, @key.random_number.length
     assert_equal "12345", @clave.random_number
   end
-
-  # def test_generate #i don't think that I'm testing this correctly
-  #   skip
-  #   assert_instance_of Integer, @key.generate.to_s.to_i #also test for size
-  #   assert_equal 5, @key.random_number.length #also test not same // compare
-  #   #mock(:rn  )
-  # end
 
   def test_get_digits
     expected = [1, 2, 3, 4, 5]
@@ -32,7 +26,6 @@ class KeyTest < MiniTest::Test
   end
 
   def test_assign_clave
-    #binding.pry
     @clave.get_digits
     assert_equal 12, @clave.a_key
     assert_equal 23, @clave.b_key
